@@ -11,6 +11,10 @@ function searchWeather() {
     if (CITY_NAME.length == 0) {
         return alert('Please enter a city name!');
     }
+
+    ELEMENTS_ELEMENT_LOADING_TEXT.style.display = 'block';
+    ELEMENTS_ELEMENT_WEATHER_BOX.style.display = 'none';
+
     const URL = `https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}`;
 
     Http.fetchData(URL)
@@ -34,5 +38,6 @@ function updateWeather(weatherData) {
     ELEMENTS.ELEMENT_WEATHER_DESCRIPTION.textContent = weatherData.description;
     ELEMENTS.ELEMENT_WEATHER_TEMPERATURE.textContent = weatherData.temperature;
 
+    ELEMENTS.ELEMENTS_ELEMENT_LOADING_TEXT.style.display = 'none';
     ELEMENTS.ELEMENT_WEATHER_BOX.style.display = 'block';
 }
